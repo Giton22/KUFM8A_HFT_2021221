@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KUFM8A_HFT_2021221.Data\KUFM8A_HFT_2021221.Data.csproj" />
+    <ProjectReference Include="..\KUFM8A_HFT_2021221.Logic\KUFM8A_HFT_2021221.Logic.csproj" />
+    <ProjectReference Include="..\KUFM8A_HFT_2021221.Models\KUFM8A_HFT_2021221.Models.csproj" />
+    <ProjectReference Include="..\KUFM8A_HFT_2021221.Repository\KUFM8A_HFT_2021221.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
