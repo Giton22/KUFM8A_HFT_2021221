@@ -12,12 +12,14 @@ namespace KUFM8A_HFT_2021221.Models
    public class Mobile
     {
 
-        public Mobile() { }
-
         public Mobile(string name, int id)
         {
             Model = name;
             BrandId = id;
+        }
+        public Mobile()
+        {
+            Cpus = new HashSet<Cpu>();
         }
 
         [Key]
@@ -31,6 +33,8 @@ namespace KUFM8A_HFT_2021221.Models
 
         [NotMapped]
         public virtual Brand Brand { get; set; }
+        [NotMapped]
+        public virtual ICollection<Cpu> Cpus { get; set; }
 
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }

@@ -10,7 +10,7 @@ namespace KUFM8A_HFT_2021221.Models
 {
     [Table("cpus")]
 
-    class Cpu
+    public class Cpu
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
