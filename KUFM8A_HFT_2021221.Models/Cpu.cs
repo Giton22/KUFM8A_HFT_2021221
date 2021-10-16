@@ -27,5 +27,9 @@ namespace KUFM8A_HFT_2021221.Models
 
         [ForeignKey(nameof(Mobile))]
         public int MobileId { get; set; }
+        public Cpu()
+        {
+            
+        }
     }
 }
