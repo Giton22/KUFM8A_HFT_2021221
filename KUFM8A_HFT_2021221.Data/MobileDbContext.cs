@@ -6,8 +6,8 @@ namespace KUFM8A_HFT_2021221.Data
 {
     public partial class MobileDbContext:DbContext
     {
-        public virtual DbSet<Brand> Brand { get; set; }
-        public virtual DbSet<Mobile> Cars { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Mobile> Mobiles { get; set; }
         public virtual DbSet<Cpu> CPUs { get; set; }
 
 
