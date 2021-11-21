@@ -41,5 +41,12 @@ namespace KUFM8A_HFT_2021221.Logic
             cpuRepository.Update(cpu);
 
         }
+        public IEnumerable<KeyValuePair<string, int>> CPUCountByMobile()
+        {
+            return from x in cpuRepository.ReadAll()
+                   group x by x.Mobile.Model into g
+                   select new KeyValuePair<string, int>
+                   (g.Key, g.Count());
+        }
     }
 }

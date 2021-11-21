@@ -5,6 +5,7 @@ namespace KUFM8A_HFT_2021221.Logic
 {
     public interface ICpuLogic
     {
+        IEnumerable<KeyValuePair<string, int>> CPUCountByMobile();
         void Create(Cpu cpu);
         void Delete(int id);
         Cpu Read(int id);
