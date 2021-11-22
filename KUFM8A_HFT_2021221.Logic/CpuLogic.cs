@@ -18,7 +18,18 @@ namespace KUFM8A_HFT_2021221.Logic
 
         public void Create(Cpu cpu)
         {
-            cpuRepository.Create(cpu);
+            if (cpu.CPUName.Length < 3)
+            {
+                throw new Exception("Name must be over 2 ");
+            }
+            else if (cpu.CPUName == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                cpuRepository.Create(cpu);
+            }
         }
 
         public Cpu Read(int id)

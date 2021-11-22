@@ -18,7 +18,11 @@ namespace KUFM8A_HFT_2021221.Logic
         {
             if (mobile.Model.Length<3)
             {
-                throw new Exception("Name must be over 3 ");
+                throw new Exception("Name must be over 2 ");
+            }
+            else if (mobile.Model==null)
+            {
+                throw new ArgumentNullException();
             }
             else
             {
@@ -61,7 +65,7 @@ namespace KUFM8A_HFT_2021221.Logic
                    group x by x.Brand.Name into g
                    select new KeyValuePair<string, List<string>>
                    (g.Key, g.Select(x => x.Model).ToList());
-
+           
         }
     }
 }
