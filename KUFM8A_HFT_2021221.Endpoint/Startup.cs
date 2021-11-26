@@ -21,6 +21,7 @@ namespace KUFM8A_HFT_2021221.Endpoint
             services.AddControllers();
             services.AddTransient<IBrandLogic, BrandLogic>();
             services.AddTransient<IMobileLogic, MobileLogic>();
+            services.AddTransient<ICpuLogic, CpuLogic>();
             services.AddTransient<IBrandRepository, BrandRepository>();
             services.AddTransient<IMobileRepository, MobileRepository>();
             services.AddTransient<ICpuRepository, CpuRepository>();

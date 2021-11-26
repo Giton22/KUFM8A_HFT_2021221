@@ -13,7 +13,7 @@ namespace KUFM8A_HFT_2021221.Endpoint.Controllers
     {
         IMobileLogic logic;
 
-        public MobileController(MobileLogic mobileLogic)
+        public MobileController(IMobileLogic mobileLogic)
         {
             logic = mobileLogic;
         }

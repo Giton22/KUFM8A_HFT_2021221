@@ -13,7 +13,7 @@ namespace KUFM8A_HFT_2021221.Endpoint.Controllers
     {
         ICpuLogic logic;
 
-        public CpuController(CpuLogic cpuLogic)
+        public CpuController(ICpuLogic cpuLogic)
         {
             logic = cpuLogic;
         }
