@@ -36,7 +36,7 @@ namespace KUFM8A_HFT_2021221.Endpoint.Controllers
             logic.Create(value);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Cpu value)
         {
             logic.Update(value);
