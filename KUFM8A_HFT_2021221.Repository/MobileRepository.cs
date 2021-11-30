@@ -43,6 +43,7 @@ namespace KUFM8A_HFT_2021221.Repository
             var oldmobile = Read(mobile.Id);
             oldmobile.Model = mobile.Model;
             oldmobile.BrandId = mobile.BrandId;
+            oldmobile.Price = mobile.Price;
             db.SaveChanges();
         }
     }

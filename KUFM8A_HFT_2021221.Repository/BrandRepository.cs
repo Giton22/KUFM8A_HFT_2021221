@@ -42,6 +42,7 @@ namespace KUFM8A_HFT_2021221.Repository
         {
             var oldbrand = Read(brand.Id);
             oldbrand.Name = brand.Name;
+            oldbrand.Region = brand.Region;
             db.SaveChanges();
         }
 
