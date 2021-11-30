@@ -41,5 +41,9 @@ namespace KUFM8A_HFT_2021221.Models
 
         [ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
+        public override string ToString()
+        {
+            return $"Id:{Id} Model: {Model} Price: {Price}";
+        }
     }
 }

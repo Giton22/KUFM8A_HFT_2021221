@@ -25,5 +25,12 @@ namespace KUFM8A_HFT_2021221.Models
         {
             Mobiles = new HashSet<Mobile>();
         }
+
+        public override string ToString()
+        {
+            return $"Id:{Id} Name: {Name} Region: {Region}";
+        }
     }
+
+    
 }

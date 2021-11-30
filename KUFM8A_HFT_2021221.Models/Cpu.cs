@@ -33,5 +33,9 @@ namespace KUFM8A_HFT_2021221.Models
         {
             
         }
+        public override string ToString()
+        {
+            return $"Id:{Id} CPUName: {CPUName}";
+        }
     }
 }
