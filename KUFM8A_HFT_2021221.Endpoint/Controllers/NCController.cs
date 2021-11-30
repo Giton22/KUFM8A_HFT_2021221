@@ -11,22 +11,40 @@ namespace KUFM8A_HFT_2021221.Endpoint.Controllers
     [ApiController]
     public class NcController : ControllerBase
     {
-        IMobileLogic logic;
+        IMobileLogic mobileLogic;
+        ICpuLogic cpuLogic;
 
-        public NcController(IMobileLogic mobileLogic)
+        public NcController(IMobileLogic mobileLogic,ICpuLogic cpuLogic)
         {
-            logic = mobileLogic;
+            this.mobileLogic = mobileLogic;
+            this.cpuLogic = cpuLogic;
         }
 
         [HttpGet]
         public IEnumerable<KeyValuePair<string, int>> MobileCountbyBrand()
         {
-            return logic.MobileCountbyBrand();
+            return mobileLogic.MobileCountbyBrand();
         }
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, List<string>>> MobilesByBrand()
+        public IEnumerable<KeyValuePair<string, double>> AveragePriceByBrands()
         {
-            return logic.MobilesByBrand();
+            return mobileLogic.AveragePriceByBrands();
         }
+        [HttpGet]
+        public IEnumerable<KeyValuePair<string, double>> AveragePriceByRegion()
+        {
+            return mobileLogic.AveragePriceByRegion();
+        }
+        [HttpGet]
+        public IEnumerable<KeyValuePair<string, int>> RegionBrandCount()
+        {
+            return mobileLogic.RegionBrandCount();
+        }
+        [HttpGet]
+        public IEnumerable<KeyValuePair<string, int>> CPUCountByMobile()
+        {
+            return cpuLogic.CPUCountByMobile();
+        }
+
     }
 }
