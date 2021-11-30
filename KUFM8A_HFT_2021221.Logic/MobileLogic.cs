@@ -16,11 +16,11 @@ namespace KUFM8A_HFT_2021221.Logic
 
         public void Create(Mobile mobile)
         {
-            if (mobile.Model.Length<3)
+            if (mobile.Model.Length < 3)
             {
                 throw new Exception("Name must be over 2 ");
             }
-            else if (mobile.Model==null)
+            else if (mobile.Model == null)
             {
                 throw new ArgumentNullException();
             }
@@ -28,7 +28,7 @@ namespace KUFM8A_HFT_2021221.Logic
             {
                 mobileRepository.Create(mobile);
             }
-   
+
         }
 
         public Mobile Read(int id)
@@ -59,13 +59,35 @@ namespace KUFM8A_HFT_2021221.Logic
                    (g.Key, g.Count());
 
         }
-        public IEnumerable<KeyValuePair<string,List<string>>> MobilesByBrand()
+        public IEnumerable<KeyValuePair<string, int>> RegionBrandCount()
+        {
+            return from x in mobileRepository.ReadAll()
+                   group x by x.Brand.Region into g
+                   select new KeyValuePair<string, int>
+                   (g.Key, g.Count());
+
+        }
+        public IEnumerable<KeyValuePair<string, double>> AveragePriceByBrands()
         {
             return from x in mobileRepository.ReadAll()
                    group x by x.Brand.Name into g
-                   select new KeyValuePair<string, List<string>>
-                   (g.Key, g.Select(x => x.Model).ToList());
-           
+                   select new
+                   KeyValuePair<string, double>
+                   (
+                       g.Key,
+                       g.Average(c => c.Price)
+                   );
+        }
+        public IEnumerable<KeyValuePair<string, double>> AveragePriceByRegion()
+        {
+            return from x in mobileRepository.ReadAll()
+                   group x by x.Brand.Region into g
+                   select new
+                   KeyValuePair<string, double>
+                   (
+                       g.Key,
+                       g.Average(c => c.Price)
+                   );
         }
     }
 }
