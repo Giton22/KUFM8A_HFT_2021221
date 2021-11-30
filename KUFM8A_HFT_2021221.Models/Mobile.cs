@@ -31,6 +31,7 @@ namespace KUFM8A_HFT_2021221.Models
         [MaxLength(100)]
         [Required]
         public string Model { get; set; }
+        public int Price { get; set; }
 
         [NotMapped]
         [JsonIgnore]

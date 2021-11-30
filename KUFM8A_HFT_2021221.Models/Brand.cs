@@ -17,6 +17,7 @@ namespace KUFM8A_HFT_2021221.Models
         [MaxLength(100)]
         [Required]
         public string Name { get; set; }
+        public string Region { get; set; }
 
         [NotMapped]
         public virtual ICollection<Mobile> Mobiles {get; set; }
