@@ -3,12 +3,12 @@ using KUFM8A_HFT_2021221.Models;
 using KUFM8A_HFT_2021221.Repository;
 using Moq;
 using NUnit.Framework;
-using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KUFM8A_HFT_2021221.Test
-{   [TestFixture]
+{
+    [TestFixture]
     public class MobileLogicTest
     {
         private MobileLogic mobileLogic { get; set; }
@@ -22,8 +22,8 @@ namespace KUFM8A_HFT_2021221.Test
             Mock<ICpuRepository> mockedCpuRepo = new Mock<ICpuRepository>();
             Mock<IBrandRepository> mockedBrandRepo = new Mock<IBrandRepository>();
 
-            Brand fakeBrand = new Brand() { Name = "Oppo" ,Region="China"};
-            Mobile fakeMobile = new Mobile() { Model = "A10",Price=200};
+            Brand fakeBrand = new Brand() { Name = "Oppo", Region = "China" };
+            Mobile fakeMobile = new Mobile() { Model = "A10", Price = 200 };
 
             mockedMobileRepo.Setup(t => t.Create(It.IsAny<Mobile>()));
             mockedMobileRepo.Setup(t => t.ReadAll()).Returns(
@@ -41,7 +41,7 @@ namespace KUFM8A_HFT_2021221.Test
                 Brand = fakeBrand,
                 Price=500
             },
-             }.AsQueryable()) ;
+             }.AsQueryable());
 
             mockedCpuRepo.Setup(t => t.Create(It.IsAny<Cpu>()));
             mockedCpuRepo.Setup(t => t.ReadAll()).Returns(
@@ -51,7 +51,7 @@ namespace KUFM8A_HFT_2021221.Test
                     {
                         CPUName="Exynos",
                         Mobile=fakeMobile
-                        
+
                     },
                     new Cpu()
                     {
@@ -100,7 +100,7 @@ namespace KUFM8A_HFT_2021221.Test
         public void TestAveragePriceByBrands()
         {
             var result = mobileLogic.AveragePriceByBrands().ToArray();
-            Assert.That(result[0], Is.EqualTo(new KeyValuePair<string,double>("Oppo",350)));
+            Assert.That(result[0], Is.EqualTo(new KeyValuePair<string, double>("Oppo", 350)));
         }
         //************************************************************************************************************************************************
         [Test]
@@ -128,8 +128,8 @@ namespace KUFM8A_HFT_2021221.Test
         public void TestAveragePriceByRegion()
         {
             var result = mobileLogic.AveragePriceByRegion().ToArray();
-            
-            Assert.That(result[0], Is.EqualTo(new KeyValuePair<string, double>("China",350)));
+
+            Assert.That(result[0], Is.EqualTo(new KeyValuePair<string, double>("China", 350)));
         }
         //************************************************************************************************************************************************
         [Test]
@@ -142,13 +142,13 @@ namespace KUFM8A_HFT_2021221.Test
         [TestCase("A10", true)]
         [TestCase("Mi9", true)]
         [TestCase("As", false)]
-        [TestCase(null,false)]
-        public void TestCreateMobile(string model,bool result)
+        [TestCase(null, false)]
+        public void TestCreateMobile(string model, bool result)
         {
             var testmobile = new Mobile() { Model = model };
             if (result)
             {
-                
+
                 Assert.That(() => { mobileLogic.Create(testmobile); }, Throws.Nothing);
             }
             else

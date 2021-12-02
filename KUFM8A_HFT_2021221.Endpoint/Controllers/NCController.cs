@@ -1,7 +1,5 @@
 using KUFM8A_HFT_2021221.Logic;
-using KUFM8A_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 
 namespace KUFM8A_HFT_2021221.Endpoint.Controllers
@@ -14,7 +12,7 @@ namespace KUFM8A_HFT_2021221.Endpoint.Controllers
         IMobileLogic mobileLogic;
         ICpuLogic cpuLogic;
 
-        public NcController(IMobileLogic mobileLogic,ICpuLogic cpuLogic)
+        public NcController(IMobileLogic mobileLogic, ICpuLogic cpuLogic)
         {
             this.mobileLogic = mobileLogic;
             this.cpuLogic = cpuLogic;

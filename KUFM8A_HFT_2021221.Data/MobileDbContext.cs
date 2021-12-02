@@ -1,10 +1,9 @@
 ﻿using KUFM8A_HFT_2021221.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace KUFM8A_HFT_2021221.Data
 {
-    public partial class MobileDbContext:DbContext
+    public partial class MobileDbContext : DbContext
     {
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Mobile> Mobiles { get; set; }
@@ -49,16 +48,16 @@ namespace KUFM8A_HFT_2021221.Data
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
             // Part 1
-            Brand xiaomi = new Brand() { Id = 1, Name = "Xiaomi",Region="China" };
-            Brand samsung = new Brand() { Id = 2, Name = "Samsung",Region= "South Korean" };
-            Brand huawei  = new Brand() { Id = 3, Name = "Huawei", Region= "China" };
+            Brand xiaomi = new Brand() { Id = 1, Name = "Xiaomi", Region = "China" };
+            Brand samsung = new Brand() { Id = 2, Name = "Samsung", Region = "South Korean" };
+            Brand huawei = new Brand() { Id = 3, Name = "Huawei", Region = "China" };
 
-            Mobile xiaomi1 = new Mobile() { Id = 1, BrandId = xiaomi.Id,  Model = "Mi 10",Price=200 };
-            Mobile xiaomi2 = new Mobile() { Id = 2, BrandId = xiaomi.Id,  Model = "Mi 11", Price = 400 };
-            Mobile samsung1 = new Mobile() { Id = 3, BrandId = samsung.Id,  Model = "Galaxy S10", Price = 500 };
-            Mobile samsung2 = new Mobile() { Id = 4, BrandId = samsung.Id,  Model = "Galaxy S20", Price = 600 };
-            Mobile huawei1 = new Mobile() { Id = 5, BrandId = huawei.Id,  Model = "P10", Price = 300 };
-            Mobile huawei2 = new Mobile() { Id = 6, BrandId = huawei.Id,  Model = "Mate 10", Price = 400 };
+            Mobile xiaomi1 = new Mobile() { Id = 1, BrandId = xiaomi.Id, Model = "Mi 10", Price = 200 };
+            Mobile xiaomi2 = new Mobile() { Id = 2, BrandId = xiaomi.Id, Model = "Mi 11", Price = 400 };
+            Mobile samsung1 = new Mobile() { Id = 3, BrandId = samsung.Id, Model = "Galaxy S10", Price = 500 };
+            Mobile samsung2 = new Mobile() { Id = 4, BrandId = samsung.Id, Model = "Galaxy S20", Price = 600 };
+            Mobile huawei1 = new Mobile() { Id = 5, BrandId = huawei.Id, Model = "P10", Price = 300 };
+            Mobile huawei2 = new Mobile() { Id = 6, BrandId = huawei.Id, Model = "Mate 10", Price = 400 };
 
             Cpu xioamicpu1 = new Cpu() { Id = 1, MobileId = xiaomi1.Id, CPUName = "Snapdragon 865" };
             Cpu xioamicpu2 = new Cpu() { Id = 2, MobileId = xiaomi2.Id, CPUName = "Snapdragon 888" };

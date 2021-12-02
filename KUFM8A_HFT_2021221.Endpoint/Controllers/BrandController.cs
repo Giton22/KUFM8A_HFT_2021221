@@ -1,7 +1,6 @@
 using KUFM8A_HFT_2021221.Logic;
 using KUFM8A_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 
 namespace KUFM8A_HFT_2021221.Endpoint.Controllers

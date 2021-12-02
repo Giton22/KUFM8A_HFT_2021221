@@ -1,8 +1,8 @@
 ﻿using KUFM8A_HFT_2021221.Models;
 using KUFM8A_HFT_2021221.Repository;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KUFM8A_HFT_2021221.Logic
 {
