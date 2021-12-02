@@ -2,7 +2,6 @@
 using KUFM8A_HFT_2021221.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace KUFM8A_HFT_2021221.Client
 {
@@ -10,7 +9,7 @@ namespace KUFM8A_HFT_2021221.Client
     {
         static RestService rest = new RestService("http://localhost:23793");
         static void Main(string[] args)
-           
+
         {
             var nc = new ConsoleMenu(args, 1)
                 .Add("Mobile Count by Brand", () => MobileCountbyBrand())
@@ -53,7 +52,7 @@ namespace KUFM8A_HFT_2021221.Client
 
             var mobile = new ConsoleMenu(args, 1)
                 .Add("Add new Mobile", () => CreateMobile("mobile"))
-                .Add("Read a Mobile",()=> ReadAMobile("mobile"))
+                .Add("Read a Mobile", () => ReadAMobile("mobile"))
                 .Add("Read all Mobiles", () => ReadAllMobiles("mobile"))
                 .Add("Update a Mobile", () => UpdateMobile("mobile"))
                 .Add("Delete a Mobile", () => DeleteMobile("mobile"))
@@ -77,7 +76,7 @@ namespace KUFM8A_HFT_2021221.Client
                 .Add("Read all Cpu", () => ReadAllCpus("cpu"))
                 .Add("Update a Cpu", () => UpdateCpu("cpu"))
                 .Add("Delete a Cpu", () => DeleteCpu("cpu"))
-                .Add("Exit",  ConsoleMenu.Close).Configure(config =>
+                .Add("Exit", ConsoleMenu.Close).Configure(config =>
                 {
                     config.SelectedItemBackgroundColor = ConsoleColor.Blue;
                     config.Selector = "[KEKW]";
@@ -91,7 +90,7 @@ namespace KUFM8A_HFT_2021221.Client
                 });
 
 
-            var mainmenu = new ConsoleMenu(args,0)
+            var mainmenu = new ConsoleMenu(args, 0)
                            .Add("Brand Menu", brand.Show)
                            .Add("Mobile Menu", mobile.Show)
                            .Add("Cpu Menu", Cpu.Show)
@@ -106,39 +105,39 @@ namespace KUFM8A_HFT_2021221.Client
               config.Title = "Main menu";
               config.EnableWriteTitle = true;
               config.EnableBreadcrumb = false;
-              config.WriteItemAction= item => Console.Write("{1}", config.Selector, item.Name);
-              
+              config.WriteItemAction = item => Console.Write("{1}", config.Selector, item.Name);
+
           });
 
             mainmenu.Show();
         }
-        static void CreateBrand(string endpoint) 
+        static void CreateBrand(string endpoint)
         {
             Console.WriteLine("Brand Name:");
-            string name= Console.ReadLine();
+            string name = Console.ReadLine();
             Console.WriteLine("Region:");
-            string region =Console.ReadLine();
+            string region = Console.ReadLine();
             var brand = new Brand() { Name = name, Region = region };
             rest.Post(brand, endpoint);
         }
-        static void ReadABrand(string endpoint) 
+        static void ReadABrand(string endpoint)
         {
             Console.WriteLine("Brand Id:");
             int id = int.Parse(Console.ReadLine());
-            var brand = rest.Get<Brand>(id,endpoint);
+            var brand = rest.Get<Brand>(id, endpoint);
             Console.WriteLine(brand.ToString());
             Console.ReadLine();
         }
-        static void ReadAllBrands(string endpoint) 
+        static void ReadAllBrands(string endpoint)
         {
             var list = rest.Get<Brand>(endpoint);
             foreach (var item in list)
             {
-                Console.WriteLine(item.ToString()+"\n");
+                Console.WriteLine(item.ToString() + "\n");
             }
             Console.ReadLine();
         }
-        static void UpdateBrand(string endpoint) 
+        static void UpdateBrand(string endpoint)
         {
 
             Console.WriteLine("Brand Id:");
@@ -153,7 +152,7 @@ namespace KUFM8A_HFT_2021221.Client
             Console.ReadLine();
 
         }
-        static void DeleteBrand(string endpoint) 
+        static void DeleteBrand(string endpoint)
         {
             Console.WriteLine("Brand Id:");
             int id = int.Parse(Console.ReadLine());
@@ -162,7 +161,7 @@ namespace KUFM8A_HFT_2021221.Client
             Console.ReadLine();
         }
 
-        static void CreateMobile(string endpoint) 
+        static void CreateMobile(string endpoint)
         {
             var list = rest.Get<Brand>("brand");
             Console.WriteLine("Mobile Model:");
@@ -175,7 +174,7 @@ namespace KUFM8A_HFT_2021221.Client
             int brandId = int.Parse(Console.ReadLine());
             Console.WriteLine("Price:");
             int price = int.Parse(Console.ReadLine());
-            var brand = new Mobile() { Model =model,BrandId=brandId, Price=price};
+            var brand = new Mobile() { Model = model, BrandId = brandId, Price = price };
             rest.Post(brand, endpoint);
         }
         static void ReadAMobile(string endpoint)
@@ -194,18 +193,24 @@ namespace KUFM8A_HFT_2021221.Client
                 Console.WriteLine(item.ToString() + "\n");
             }
             Console.ReadLine();
-        
-    }
+
+        }
         static void UpdateMobile(string endpoint)
         {
-
+            var list = rest.Get<Brand>("brand");
             Console.WriteLine("Mobile Id:");
             int id = int.Parse(Console.ReadLine());
             Console.WriteLine("Model:");
             string model = Console.ReadLine();
             Console.WriteLine("Price:");
             int price = int.Parse(Console.ReadLine());
-            var mobile = new Mobile() { Id = id, Model = model, Price = price };
+            foreach (var item in list)
+            {
+                Console.WriteLine($"{item.Id} - {item.Name}");
+            }
+            Console.WriteLine("Brand id:");
+            int brandId = int.Parse(Console.ReadLine());
+            var mobile = new Mobile() { Id = id, Model = model, Price = price, BrandId = brandId };
             rest.Put<Mobile>(mobile, endpoint);
             Console.WriteLine($"Mobile with id:{id} succesfully updated!");
             Console.ReadLine();
@@ -230,10 +235,9 @@ namespace KUFM8A_HFT_2021221.Client
             {
                 Console.WriteLine($"{item.Id} - {item.Model}");
             }
+            Console.WriteLine("MobileId:");
             int mobileId = int.Parse(Console.ReadLine());
-            Console.WriteLine("Price:");
-            int price = int.Parse(Console.ReadLine());
-            var cpu = new Cpu() { CPUName = cpuname, MobileId = mobileId};
+            var cpu = new Cpu() { CPUName = cpuname, MobileId = mobileId };
             rest.Post(cpu, endpoint);
         }
         static void ReadACpu(string endpoint)
@@ -256,11 +260,18 @@ namespace KUFM8A_HFT_2021221.Client
         }
         static void UpdateCpu(string endpoint)
         {
+            var list = rest.Get<Mobile>("mobile");
             Console.WriteLine("Cpu Id:");
             int id = int.Parse(Console.ReadLine());
             Console.WriteLine("Cpu Name:");
             string name = Console.ReadLine();
-            var cpu = new Cpu() { Id = id, CPUName = name };
+            foreach (var item in list)
+            {
+                Console.WriteLine($"{item.Id} - {item.Model}");
+            }
+            Console.WriteLine("Mobile:");
+            int mobileId = int.Parse(Console.ReadLine());
+            var cpu = new Cpu() { Id = id, CPUName = name, MobileId = mobileId };
             rest.Put<Cpu>(cpu, endpoint);
             Console.WriteLine($"Cpu with id:{id} succesfully updated!");
             Console.ReadLine();
@@ -329,9 +340,5 @@ namespace KUFM8A_HFT_2021221.Client
             }
             Console.ReadLine();
         }
-
-
-
     }
-
 }
