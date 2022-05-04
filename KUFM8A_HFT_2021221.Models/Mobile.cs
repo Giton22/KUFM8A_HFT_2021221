@@ -31,12 +31,12 @@ namespace KUFM8A_HFT_2021221.Models
 
         [NotMapped]
         [JsonIgnore]
-        public virtual Brand Brand { get; set; }
+        public virtual Brand? Brand { get; set; }
         [NotMapped]
         public virtual ICollection<Cpu> Cpus { get; set; }
 
         [ForeignKey(nameof(Brand))]
-        public int BrandId { get; set; }
+        public int? BrandId { get; set; }
         public override string ToString()
         {
             return $"Id:{Id} Model: {Model} Price: {Price}";

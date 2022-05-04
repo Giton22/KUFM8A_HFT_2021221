@@ -1,0 +1,48 @@
+﻿body {
+    background: #f0f0f0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+    font-size: 13px;
+    line-height: 18px;
+}
+table,th,td{
+border:1px solid black;    
+}
+table {
+    border-collapse: collapse;
+    width:100%;
+    text-align:center;
+    background-color:lightblue;
+}
+
+
+th td {
+    padding: 10px;
+}
+th {
+    background-color: darkblue;
+    color: white;
+}
+#formdiv{
+    display:flex;
+    flex-direction:column;
+}
+#formdiv label,button,input{
+    margin:10px;
+    padding:7px;
+}#formdiv label{
+     font-weight:bolder;
+ }
+#updateformdiv {
+    display: none;
+    flex-direction: column;
+}
+
+    #updateformdiv label, button, input {
+        margin: 10px;
+        padding: 7px;
+    }
+
+    #updateformdiv label {
+        font-weight: bolder;
+    }

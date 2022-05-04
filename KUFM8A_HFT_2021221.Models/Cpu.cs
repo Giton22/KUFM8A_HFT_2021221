@@ -20,10 +20,10 @@ namespace KUFM8A_HFT_2021221.Models
 
         [NotMapped]
         [JsonIgnore]
-        public virtual Mobile Mobile { get; set; }
+        public virtual Mobile? Mobile { get; set; }
 
         [ForeignKey(nameof(Mobile))]
-        public int MobileId { get; set; }
+        public int? MobileId { get; set; }
         public Cpu()
         {
 

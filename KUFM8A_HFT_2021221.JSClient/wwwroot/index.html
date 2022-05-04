@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CPUs</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <h1>Cpus</h1>
+    <div id="formdiv">
+        <label>CPU Name</label>
+        <input type="text" id="cpu" />
+        <button type="button" onclick="create()">Add Cpu</button>
+    </div>
+    <div id="updateformdiv">
+        <label>CPU Name</label>
+        <input type="text" id="cpuupdate" />
+        <button type="button" onclick="update()">Update Cpu</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -18,7 +18,7 @@ namespace KUFM8A_HFT_2021221.Models
         public string Region { get; set; }
 
         [NotMapped]
-        public virtual ICollection<Mobile> Mobiles { get; set; }
+        public virtual ICollection<Mobile>? Mobiles { get; set; }
         public Brand()
         {
             Mobiles = new HashSet<Mobile>();
